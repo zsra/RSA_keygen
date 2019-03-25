@@ -25,5 +25,3 @@ print("N:\t" + str(N))
 print("Totien:\t" + str(Totien))
 print("\nPrivate key:\t(" + str(d) + ", " + str(N) + ")")
 print("Public key:\t(" + str(e) + ", " + str(N) + ")")
-
-#print(xgcd.xgcd(55,22)[0])
