@@ -20,7 +20,7 @@ d  = xgcd.modinv(e, Totien)
 
 print("RSA key genrator")
 print("p:\t" + str(p))
-print("p:\t" + str(q))
+print("q:\t" + str(q))
 print("N:\t" + str(N))
 print("Totien:\t" + str(Totien))
 print("\nPrivate key:\t(" + str(d) + ", " + str(N) + ")")
