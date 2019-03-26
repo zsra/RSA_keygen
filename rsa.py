@@ -2,9 +2,11 @@ import prime as prime
 import xgcd as xgcd
 import random
 
+import decrypt as decrypt
+import encrypt as encrypt
 
-min_prime = 10000
-max_prime = 100000
+min_prime = 10
+max_prime = 100
 
 p = prime.GetPrime(min_prime, max_prime)
 q = prime.GetPrime(min_prime, max_prime)
@@ -25,3 +27,11 @@ print("N:\t" + str(N))
 print("Totien:\t" + str(Totien))
 print("\nPrivate key:\t(" + str(d) + ", " + str(N) + ")")
 print("Public key:\t(" + str(e) + ", " + str(N) + ")")
+
+msg_raw = input("Message:\t")
+print("Encrpyted Text:")
+msg_encrypt = encrypt.msg(int(msg_raw), e, N)
+print(str(msg_encrypt))
+print("Dencrpyted Text:")
+msg_decrypt = decrypt.msg(msg_encrypt, d,N)
+print(str(msg_decrypt))
