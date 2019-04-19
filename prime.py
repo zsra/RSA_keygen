@@ -3,7 +3,7 @@ import math
 import xgcd as xgcd
 
 def GetPrime(min, max):
-    primes = [i for i in range(min, max) if isPrime(i)]
+    primes = [i for i in range(min, max) if rabinMiller(i)]
     return random.choice(primes)
 
 def rabinMiller(num):
