@@ -3,30 +3,49 @@ import math
 import xgcd as xgcd
 
 def GetPrime(min, max):
-    primes = [i for i in range(min, max) if rabinMiller(i)]
+    primes = [i for i in range(min, max) if is_Prime(i)]
     return random.choice(primes)
 
-def rabinMiller(num):
-    # Returns True if num is a prime number.
+def is_Prime(n):
+    """
+    Miller-Rabin primality test.
+ 
+    A return value of False means n is certainly not prime. A return value of
+    True means n is very likely a prime.
+    """
+    if n!=int(n):
+        return False
+    n=int(n)
+    #Miller-Rabin test for prime
+    if n==0 or n==1 or n==4 or n==6 or n==8 or n==9:
+        return False
+ 
+    if n==2 or n==3 or n==5 or n==7:
+        return True
+    s = 0
+    d = n-1
+    while d%2==0:
+        d>>=1
+        s+=1
+    assert(2**s * d == n-1)
+ 
+    def trial_composite(a):
+        if pow(a, d, n) == 1:
+            return False
+        for i in range(s):
+            if pow(a, 2**i * d, n) == n-1:
+                return False
+        return True  
+ 
+    for i in range(8):#number of trials 
+        a = random.randrange(2, n)
+        if trial_composite(a):
+            return False
+ 
+    return True  
 
-    s = num - 1
-    t = 0
-    while s % 2 == 0:
-        # keep halving s while it is even (and use t
-        # to count how many times we halve s)
-        s = s // 2
-        t += 1
-
-    for trials in range(5): # try to falsify num's primality 5 times
-        a = random.randrange(2, num - 1)
-        v = pow(a, s, num)
-        if v != 1: # this test does not apply if v is 1.
-            i = 0
-            while v != (num - 1):
-                if i == t - 1:
-                    return False
-                else:
-                    i = i + 1
-                    v = (v ** 2) % num
-    return True
-
+def isCoPrime(a, b):
+    if(xgcd.egcd(a, b)[0] == 1):
+        return True
+    else:
+        return False
