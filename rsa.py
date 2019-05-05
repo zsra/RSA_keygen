@@ -3,8 +3,8 @@ import xgcd as xgcd
 import random
 
 
-min_prime = 10000
-max_prime = 100000
+min_prime = 100000
+max_prime = 1000000
 
 p = prime.GetPrime(min_prime, max_prime)
 q = prime.GetPrime(min_prime, max_prime)

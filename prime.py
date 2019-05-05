@@ -45,7 +45,7 @@ def is_Prime(n):
     return True  
 
 def isCoPrime(a, b):
-    if(xgcd.egcd(a, b)[0] == 1):
+    if(xgcd.GCD(a, b) == 1):
         return True
     else:
         return False
