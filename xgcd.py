@@ -1,3 +1,8 @@
+def GCD(x, y):  
+    while(y): 
+       x, y = y, x % y 
+    return x 
+
 def egcd(a, b):
     if a == 0:
         return (b, 0, 1)
